@@ -14,45 +14,64 @@ const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 // sidebar toggle functionality for mobile
 sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
 
-
+///////////////////////////////////////////////////////
 
 // testimonials variables
 const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
-const modalContainer = document.querySelector("[data-modal-container]");
-const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
-const overlay = document.querySelector("[data-overlay]");
+const modalCloseBtns = document.querySelectorAll("[data-modal-close-btn]");
+const overlay = document.querySelectorAll("[data-overlay]");
 
-// modal variable
-const modalImg = document.querySelector("[data-modal-img]");
-const modalTitle = document.querySelector("[data-modal-title]");
-const modalText = document.querySelector("[data-modal-text]");
+// modal toggle function for specific modal
+const testimonialsModalFunc = function (modal) {
+  modal.classList.toggle("active");
+  modal.querySelector(".overlay").classList.toggle("active");
+};
 
-// modal toggle function
-const testimonialsModalFunc = function () {
-  modalContainer.classList.toggle("active");
-  overlay.classList.toggle("active");
-}
+// add click event to all testimonial items
+testimonialsItem.forEach((item) => {
+  item.addEventListener("click", function () {
+    // Get the modal corresponding to the clicked testimonial
+    const modalId = item.getAttribute("data-modal-id");
 
-// add click event to all modal items
-for (let i = 0; i < testimonialsItem.length; i++) {
+    // Check if modalId is null or undefined
+    if (!modalId) {
+      console.error("Testimonial item is missing 'data-modal-id' attribute");
+      return; // Exit the function early to prevent further errors
+    }
+    
+    const modal = document.getElementById(modalId);
 
-  testimonialsItem[i].addEventListener("click", function () {
+    // Check if the modal exists before trying to access its content
+    if (modal) {
+      modal.querySelector("[data-modal-img]").src = item.querySelector("[data-testimonials-avatar]").src;
+      modal.querySelector("[data-modal-img]").alt = item.querySelector("[data-testimonials-avatar]").alt;
+      modal.querySelector("[data-modal-title]").innerHTML = item.querySelector("[data-testimonials-title]").innerHTML;
+      modal.querySelector("[data-modal-text]").innerHTML = item.querySelector("[data-testimonials-text]").innerHTML;
 
-    modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
-    modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-    modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
-    modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
-
-    testimonialsModalFunc();
-
+      // Open the correct modal
+      testimonialsModalFunc(modal);
+    } else {
+      console.error("Modal with ID " + modalId + " not found.");
+    }
   });
+});
 
-}
+// Add event listeners for close buttons and overlay clicks
+modalCloseBtns.forEach((closeBtn) => {
+  closeBtn.addEventListener("click", function () {
+    const modal = closeBtn.closest(".modal-container");
+    testimonialsModalFunc(modal);
+  });
+});
 
-// add click event to modal close button
-modalCloseBtn.addEventListener("click", testimonialsModalFunc);
-overlay.addEventListener("click", testimonialsModalFunc);
+overlay.forEach((overlayItem) => {
+  overlayItem.addEventListener("click", function () {
+    const modal = overlayItem.closest(".modal-container");
+    testimonialsModalFunc(modal);
+  });
+});
 
+///////////////////////////////////////////////////////
 
 
 // custom select variables
