@@ -16,18 +16,19 @@ sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); }
 
 ///////////////////////////////////////////////////////
 
-// testimonials variables
+// Selecting all testimonial items and modals
 const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
 const modalCloseBtns = document.querySelectorAll("[data-modal-close-btn]");
 const overlay = document.querySelectorAll("[data-overlay]");
 
-// modal toggle function for specific modal
+// Function to toggle the visibility of the modal
 const testimonialsModalFunc = function (modal) {
   modal.classList.toggle("active");
-  modal.querySelector(".overlay").classList.toggle("active");
+  const overlay = modal.querySelector(".overlay"); // Ensure only the modal's overlay is toggled
+  overlay.classList.toggle("active");
 };
 
-// add click event to all testimonial items
+// Select all testimonial items and add click event
 testimonialsItem.forEach((item) => {
   item.addEventListener("click", function () {
     // Get the modal corresponding to the clicked testimonial
@@ -38,17 +39,19 @@ testimonialsItem.forEach((item) => {
       console.error("Testimonial item is missing 'data-modal-id' attribute");
       return; // Exit the function early to prevent further errors
     }
-    
+
+    // Get the corresponding modal using the modalId
     const modal = document.getElementById(modalId);
 
     // Check if the modal exists before trying to access its content
     if (modal) {
+      // Update the modal content with testimonial data
       modal.querySelector("[data-modal-img]").src = item.querySelector("[data-testimonials-avatar]").src;
       modal.querySelector("[data-modal-img]").alt = item.querySelector("[data-testimonials-avatar]").alt;
       modal.querySelector("[data-modal-title]").innerHTML = item.querySelector("[data-testimonials-title]").innerHTML;
       modal.querySelector("[data-modal-text]").innerHTML = item.querySelector("[data-testimonials-text]").innerHTML;
 
-      // Open the correct modal
+      // Open the modal
       testimonialsModalFunc(modal);
     } else {
       console.error("Modal with ID " + modalId + " not found.");
@@ -70,6 +73,7 @@ overlay.forEach((overlayItem) => {
     testimonialsModalFunc(modal);
   });
 });
+
 
 ///////////////////////////////////////////////////////
 
