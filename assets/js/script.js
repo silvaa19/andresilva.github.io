@@ -137,25 +137,64 @@ for (let i = 0; i < filterBtn.length; i++) {
 }
 
 
-
+// =========== CONTACT =========================//
 // contact form variables
-const form = document.querySelector("[data-form]");
-const formInputs = document.querySelectorAll("[data-form-input]");
-const formBtn = document.querySelector("[data-form-btn]");
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById("contact-form");
+  const formInputs = document.querySelectorAll(".form-input");
+  const formBtn = form.querySelector("button.form-btn");
 
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
-
-    // check form validation
-    if (form.checkValidity()) {
-      formBtn.removeAttribute("disabled");
-    } else {
-      formBtn.setAttribute("disabled", "");
-    }
-
+  // Enable the button when form is valid
+  formInputs.forEach(input => {
+    input.addEventListener("input", function () {
+      if (form.checkValidity()) {
+        formBtn.removeAttribute("disabled");
+      } else {
+        formBtn.setAttribute("disabled", "");
+      }
+    });
   });
-}
+
+  // Send email when form is submitted
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const serviceID = 'service_a02gcpi';  // Replace with your EmailJS Service ID
+    const templateID = 'template_stykkyd'; // Replace with your EmailJS Template ID
+
+    const formData = {
+      fullname: form.querySelector('input[name="fullname"]').value,
+      email: form.querySelector('input[name="email"]').value,
+      message: form.querySelector('textarea[name="message"]').value
+    };
+
+    // Send email
+    emailjs.send(serviceID, templateID, formData)
+      .then(() => {
+        alert('Message sent successfully!');
+        form.reset();
+        formBtn.setAttribute("disabled", "");  // Disable the button again
+      })
+      .catch((error) => {
+        alert('Failed to send message: ' + error);
+      });
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// =============================================//
 
 
 
