@@ -1151,7 +1151,7 @@
           <section class="contact-form">
             <h3 class="h3 form-title">Contact Form</h3>
 
-            <form id="contact-form" class="form">
+            <form id="contact-form" class="form" data-form>
               <div class="input-wrapper">
                 <input
                   type="text"
@@ -1159,6 +1159,7 @@
                   class="form-input"
                   placeholder="Full name"
                   required
+                  data-form-input
                 />
 
                 <input
@@ -1167,6 +1168,7 @@
                   class="form-input"
                   placeholder="Email address"
                   required
+                  data-form-input
                 />
               </div>
 
@@ -1175,9 +1177,10 @@
                 class="form-input"
                 placeholder="Your Message"
                 required
+                 data-form-input
               ></textarea>
 
-              <button class="form-btn" type="submit" disabled>
+              <button class="form-btn" type="submit" data-form-btn>
                 <ion-icon name="paper-plane"></ion-icon>
                 <span>Send Message</span>
               </button>

@@ -139,56 +139,24 @@ for (let i = 0; i < filterBtn.length; i++) {
 
 // =========== CONTACT =========================//
 // contact form variables
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById("contact-form");
-  const formInputs = document.querySelectorAll(".form-input");
-  const formBtn = form.querySelector("button.form-btn");
+// Initialize EmailJS with your public key
+emailjs.init('55Py0ebjoRAajEajl');
 
-  // Enable the button when form is valid
-  formInputs.forEach(input => {
-    input.addEventListener("input", function () {
-      if (form.checkValidity()) {
-        formBtn.removeAttribute("disabled");
-      } else {
-        formBtn.setAttribute("disabled", "");
-      }
+const form = document.getElementById('contact-form');
+
+form.addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  // Send the form data using EmailJS
+  emailjs.sendForm('service_a02gcpi', 'template_stykkyd', this)
+    .then(function () {
+      alert('Message sent successfully!');
+    }, function (error) {
+      // Display the exact error to understand what's going wrong
+      console.error('Failed to send message:', error);
+      alert(`Failed to send message: ${JSON.stringify(error)}`);
     });
-  });
-
-  // Send email when form is submitted
-  form.addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const serviceID = 'service_a02gcpi';  // Replace with your EmailJS Service ID
-    const templateID = 'template_stykkyd'; // Replace with your EmailJS Template ID
-
-    const formData = {
-      fullname: form.querySelector('input[name="fullname"]').value,
-      email: form.querySelector('input[name="email"]').value,
-      message: form.querySelector('textarea[name="message"]').value
-    };
-
-    // Send email
-    emailjs.send(serviceID, templateID, formData)
-      .then(() => {
-        alert('Message sent successfully!');
-        form.reset();
-        formBtn.setAttribute("disabled", "");  // Disable the button again
-      })
-      .catch((error) => {
-        alert('Failed to send message: ' + error);
-      });
-  });
 });
-
-
-
-
-
-
-
-
-
 
 
 
