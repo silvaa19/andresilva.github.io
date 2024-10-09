@@ -143,6 +143,7 @@ for (let i = 0; i < filterBtn.length; i++) {
 emailjs.init('55Py0ebjoRAajEajl');
 
 const form = document.getElementById('contact-form');
+const successMessage = document.getElementById('success-message');
 
 form.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -150,7 +151,8 @@ form.addEventListener('submit', function (event) {
   // Send the form data using EmailJS
   emailjs.sendForm('service_a02gcpi', 'template_stykkyd', this)
     .then(function () {
-      alert('Message sent successfully!');
+       successMessage.style.display = 'block';
+      //form.style.display = 'none';
     }, function (error) {
       // Display the exact error to understand what's going wrong
       console.error('Failed to send message:', error);

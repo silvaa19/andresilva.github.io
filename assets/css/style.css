@@ -1213,7 +1213,16 @@ textarea.form-input::-webkit-resizer { display: none; }
 .form-btn:disabled:hover::before { background: var(--bg-gradient-jet); }
 
 
-
+#success-message {
+  margin-top: 20px;
+  padding: 10px;
+  border: 2px solid green;
+  background-color: #e6ffe6;
+  color: green;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
+}
 
 
 /*-----------------------------------*\

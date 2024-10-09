@@ -668,18 +668,15 @@
               <li class="filter-item">
                 <button class="active" data-filter-btn>All</button>
               </li>
-
+              
               <li class="filter-item">
-                <button data-filter-btn>Web design</button>
+                <button data-filter-btn>Web Development</button>
               </li>
-
+              
               <li class="filter-item">
-                <button data-filter-btn>Applications</button>
+                <button data-filter-btn>Brands</button>
               </li>
-
-              <li class="filter-item">
-                <button data-filter-btn>Web development</button>
-              </li>
+              
             </ul>
 
             <div class="filter-select-box">
@@ -699,20 +696,17 @@
                 </li>
 
                 <li class="select-item">
-                  <button data-select-item>Web design</button>
+                  <button data-select-item>Web Development</button>
                 </li>
 
                 <li class="select-item">
-                  <button data-select-item>Applications</button>
-                </li>
-
-                <li class="select-item">
-                  <button data-select-item>Web development</button>
+                  <button data-select-item>Brands</button>
                 </li>
               </ul>
             </div>
 
             <ul class="project-list">
+              
               <li
                 class="project-item active"
                 data-filter-item
@@ -725,15 +719,13 @@
                     </div>
 
                     <img
-                      src="./assets/images/project-1.jpg"
-                      alt="finance"
+                      src="./assets/images/mtsLLC.jpg"
+                      alt="MTS Infrastructure LLC"
                       loading="lazy"
                     />
                   </figure>
-
-                  <h3 class="project-title">Finance</h3>
-
-                  <p class="project-category">Web development</p>
+                  <h3 class="project-title">MTS Infrastructure LLC</h3>
+                  <p class="project-category">Web Development</p>
                 </a>
               </li>
 
@@ -747,17 +739,14 @@
                     <div class="project-item-icon-box">
                       <ion-icon name="eye-outline"></ion-icon>
                     </div>
-
                     <img
                       src="./assets/images/project-2.png"
                       alt="orizon"
                       loading="lazy"
                     />
                   </figure>
-
                   <h3 class="project-title">Orizon</h3>
-
-                  <p class="project-category">Web development</p>
+                  <p class="project-category">Web Development</p>
                 </a>
               </li>
 
@@ -1177,15 +1166,19 @@
                 class="form-input"
                 placeholder="Your Message"
                 required
-                 data-form-input
+                data-form-input
               ></textarea>
 
               <button class="form-btn" type="submit" data-form-btn>
                 <ion-icon name="paper-plane"></ion-icon>
                 <span>Send Message</span>
               </button>
+               <!-- Custom Success Message -->
+              <p id="success-message" style="display: none; color: lightgoldenrodyellow; font-weight: bold;">
+                Message sent successfully!
+              </p>
+            
             </form>
-
             
           </section>
         </article>
