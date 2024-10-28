@@ -10,3 +10,7 @@ run = ["sh", "-c", "serve ."]
 [[ports]]
 localPort = 3000
 externalPort = 80
+
+[[ports]]
+localPort = 43977
+externalPort = 3000
