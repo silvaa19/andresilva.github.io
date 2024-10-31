@@ -1,6 +1,33 @@
 'use strict';
 
 
+// Toggle function for portfolio modals
+const togglePortfolioModal = function (modal) {
+  modal.classList.toggle("active");
+  const overlay = modal.querySelector(".overlay");
+  overlay.classList.toggle("active");
+};
+
+// Open portfolio modals on click
+document.querySelectorAll("[data-portfolio-item]").forEach((item) => {
+  item.addEventListener("click", (event) => {
+    event.preventDefault();
+    const modalId = item.getAttribute("data-modal-id");
+    const modal = document.getElementById(modalId);
+    if (modal) togglePortfolioModal(modal);
+  });
+});
+
+// Close portfolio modals with overlay or close button
+document.querySelectorAll("[data-modal-close-btn], [data-overlay]").forEach((element) => {
+  element.addEventListener("click", function () {
+    const modal = element.closest(".modal-container");
+    if (modal && modal.classList.contains("active")) togglePortfolioModal(modal);
+  });
+});
+
+
+
 
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
