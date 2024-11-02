@@ -284,37 +284,20 @@ article.active {
 }
 
 
-/*************************\
-/* Portfolio Modal Specific Styles */
-
-.portfolio-modal {
-  background: var(--eerie-black-2);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: var(--shadow-5);
-  max-width: 600px;
-  animation: fadeIn 0.4s ease-out;
+/* Project Modal Specific Styles */
+.project-modal .modal-content {
+  /*background-color: var(--onyx); /* Different background */
+  color: var(--orange-yellow-crayola); /* Unique text color */
 }
 
-.portfolio-modal .modal-title {
-  color: var(--orange-yellow-crayola);
-  font-size: var(--fs-1);
-  margin-bottom: 10px;
+.project-modal .modal-title {
+  font-size: var(--fs-1); /* Larger title font */
+  color: var(--vegas-gold);
 }
 
-.portfolio-modal p {
-  color: var(--light-gray);
-  font-size: var(--fs-5);
-  line-height: 1.6;
+.project-modal .overlay {
+  background: rgba(0, 0, 0, 0.85); /* Darker overlay for project modals */
 }
-
-/* Animation for portfolio modals */
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/*-----------------------------------*\
 
 
 /*-----------------------------------*\

@@ -1,38 +1,9 @@
 'use strict';
 
 
-// Toggle function for portfolio modals
-const togglePortfolioModal = function (modal) {
-  modal.classList.toggle("active");
-  const overlay = modal.querySelector(".overlay");
-  overlay.classList.toggle("active");
-};
-
-// Open portfolio modals on click
-document.querySelectorAll("[data-portfolio-item]").forEach((item) => {
-  item.addEventListener("click", (event) => {
-    event.preventDefault();
-    const modalId = item.getAttribute("data-modal-id");
-    const modal = document.getElementById(modalId);
-    if (modal) togglePortfolioModal(modal);
-  });
-});
-
-// Close portfolio modals with overlay or close button
-document.querySelectorAll("[data-modal-close-btn], [data-overlay]").forEach((element) => {
-  element.addEventListener("click", function () {
-    const modal = element.closest(".modal-container");
-    if (modal && modal.classList.contains("active")) togglePortfolioModal(modal);
-  });
-});
-
-
-
 
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
-
-
 
 // sidebar variables
 const sidebar = document.querySelector("[data-sidebar]");
@@ -48,49 +19,42 @@ const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
 const modalCloseBtns = document.querySelectorAll("[data-modal-close-btn]");
 const overlay = document.querySelectorAll("[data-overlay]");
 
-// Function to toggle the visibility of the modal
-const testimonialsModalFunc = function (modal) {
+'use strict';
+
+// Toggle function for all modals
+const toggleModalFunc = function (modal) {
   modal.classList.toggle("active");
-  const overlay = modal.querySelector(".overlay"); // Ensure only the modal's overlay is toggled
+  const overlay = modal.querySelector(".overlay");
   overlay.classList.toggle("active");
 };
 
-// Select all testimonial items and add click event
-testimonialsItem.forEach((item) => {
+// Select all items that open modals (testimonials and projects)
+document.querySelectorAll("[data-modal-id]").forEach((item) => {
   item.addEventListener("click", function () {
-    // Get the modal corresponding to the clicked testimonial
     const modalId = item.getAttribute("data-modal-id");
-
-    // Check if modalId is null or undefined
-    if (!modalId) {
-      console.error("Testimonial item is missing 'data-modal-id' attribute");
-      return; // Exit the function early to prevent further errors
-    }
-
-    // Get the corresponding modal using the modalId
     const modal = document.getElementById(modalId);
 
-    // Check if the modal exists before trying to access its content
     if (modal) {
-      // Update the modal content with testimonial data
-      modal.querySelector("[data-modal-img]").src = item.querySelector("[data-testimonials-avatar]").src;
-      modal.querySelector("[data-modal-img]").alt = item.querySelector("[data-testimonials-avatar]").alt;
-      modal.querySelector("[data-modal-title]").innerHTML = item.querySelector("[data-testimonials-title]").innerHTML;
-      modal.querySelector("[data-modal-text]").innerHTML = item.querySelector("[data-testimonials-text]").innerHTML;
+      toggleModalFunc(modal);
 
-      // Open the modal
-      testimonialsModalFunc(modal);
+      // Optional: Update modal content if applicable
+      if (item.hasAttribute("data-testimonials-item")) {
+        modal.querySelector("[data-modal-img]").src = item.querySelector("[data-testimonials-avatar]").src;
+        modal.querySelector("[data-modal-img]").alt = item.querySelector("[data-testimonials-avatar]").alt;
+        modal.querySelector("[data-modal-title]").innerHTML = item.querySelector("[data-testimonials-title]").innerHTML;
+        modal.querySelector("[data-modal-text]").innerHTML = item.querySelector("[data-testimonials-text]").innerHTML;
+      }
     } else {
       console.error("Modal with ID " + modalId + " not found.");
     }
   });
 });
 
-// Add event listeners for close buttons and overlay clicks
-modalCloseBtns.forEach((closeBtn) => {
-  closeBtn.addEventListener("click", function () {
-    const modal = closeBtn.closest(".modal-container");
-    testimonialsModalFunc(modal);
+// Close modals on close button and overlay click
+document.querySelectorAll("[data-modal-close-btn], [data-overlay]").forEach((element) => {
+  element.addEventListener("click", function () {
+    const modal = element.closest(".modal-container");
+    if (modal && modal.classList.contains("active")) toggleModalFunc(modal);
   });
 });
 
