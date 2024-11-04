@@ -1,6 +1,34 @@
 'use strict';
 
 
+// Carousel navigation functionality
+document.querySelectorAll(".project-modal").forEach((modal) => {
+  const images = modal.querySelectorAll(".carousel-images img");
+  let currentIndex = 0;
+
+  const updateCarousel = (index) => {
+    images.forEach((img, i) => img.classList.toggle("active", i === index));
+  };
+
+  modal.querySelector("[data-carousel-btn='prev']").addEventListener("click", () => {
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+    updateCarousel(currentIndex);
+  });
+
+  modal.querySelector("[data-carousel-btn='next']").addEventListener("click", () => {
+    currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+    updateCarousel(currentIndex);
+  });
+
+  // Initialize the carousel display
+  updateCarousel(currentIndex);
+});
+
+
+
+
+
+
 
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }

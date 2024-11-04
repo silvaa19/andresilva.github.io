@@ -769,14 +769,6 @@
               
         <!----------------BRANDS------------->
               
-              <li class="project-item active" data-filter-item data-category="brands">
-                <a href="#">
-                  <figure class="project-img">
-                    <img src="./assets/images/wsi.png" alt="WSI Icon" loading="lazy"
-                    />
-                  </figure>
-                </a>
-              </li>
 
               <li class="project-item active" data-filter-item data-category="brands">
                 <a href="https://www.mtsinfrastructure.com/" target="_blank" rel="noopener noreferrer">
@@ -794,7 +786,7 @@
                 </a>
               </li>
 
-               
+               <!-- Modal for a Project with a New Class "project-modal" -->
               <li class="project-item active" data-filter-item data-category="brands" data-modal-id="modal-wsi">
                 <a href="#">
                   <figure class="project-img">
@@ -803,11 +795,11 @@
                 </a>
               </li>
 
-              <!-- Modal for a Project with a New Class "project-modal" -->
+              
               
               <div class="modal-container project-modal" id="modal-wsi">
                 <div class="overlay" data-overlay></div>
-                <section class="testimonials-modal"> <!-- Reuse testimonials-modal structure -->
+                <section class="testimonials-modal">
                   <button class="modal-close-btn" data-modal-close-btn>
                     <ion-icon name="close-outline"></ion-icon>
                   </button>
@@ -816,6 +808,21 @@
                     <p>
                       This is the information about the Westchester Scalp Ink brand, the work done, technologies used, and other relevant details.
                     </p>
+
+                    <!-- Image Carousel -->
+                    <div class="carousel">
+                      <button class="carousel-btn prev" data-carousel-btn="prev">‹</button>
+
+                      <div class="carousel-images">
+                        <img src="./assets/images/blog-1.jpg" alt="Project Image 1" class="active">
+                        <img src="./assets/images/blog-2.jpg" alt="Project Image 2">
+                        <img src="./assets/images/blog-3.jpg" alt="Project Image 3">
+                      </div>
+
+                      <button class="carousel-btn next" data-carousel-btn="next">›</button>
+                    </div>
+
+                    
                   </div>            
                 </section>
               </div>

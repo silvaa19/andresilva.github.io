@@ -762,7 +762,60 @@ main {
 
 
 
+/* Carousel Container */
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: var(--shadow-3);
+}
 
+/* Carousel Images */
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-images img {
+  min-width: 100%;
+  height: auto;
+  display: none;
+  border-radius: 10px;
+}
+
+.carousel-images img.active {
+  display: block;
+}
+
+/* Carousel Navigation Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: var(--orange-yellow-crayola);
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.carousel-btn.prev {
+  left: 10px;
+}
+
+.carousel-btn.next {
+  right: 10px;
+}
+
+.carousel-btn:hover {
+  color: var(--white-2);
+}
+
+/*-------------------*\
 
 /*-----------------------------------*\
   #RESUME
