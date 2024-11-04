@@ -1,15 +1,17 @@
 'use strict';
 
-
-// Carousel navigation functionality
+// Carousel navigation functionality with swipe support
 document.querySelectorAll(".project-modal").forEach((modal) => {
   const images = modal.querySelectorAll(".carousel-images img");
   let currentIndex = 0;
+  let startX = 0;
+  let endX = 0;
 
   const updateCarousel = (index) => {
     images.forEach((img, i) => img.classList.toggle("active", i === index));
   };
 
+  // Event listeners for carousel navigation buttons
   modal.querySelector("[data-carousel-btn='prev']").addEventListener("click", () => {
     currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
     updateCarousel(currentIndex);
@@ -20,9 +22,31 @@ document.querySelectorAll(".project-modal").forEach((modal) => {
     updateCarousel(currentIndex);
   });
 
+  // Swipe handling for mobile devices
+  modal.querySelector(".carousel-images").addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  modal.querySelector(".carousel-images").addEventListener("touchend", (e) => {
+    endX = e.changedTouches[0].clientX;
+    handleSwipe();
+  });
+
+  const handleSwipe = () => {
+    if (startX > endX + 50) {
+      // Swipe left: Show next image
+      currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+    } else if (startX < endX - 50) {
+      // Swipe right: Show previous image
+      currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+    }
+    updateCarousel(currentIndex);
+  };
+
   // Initialize the carousel display
   updateCarousel(currentIndex);
 });
+
 
 
 

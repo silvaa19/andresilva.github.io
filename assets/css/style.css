@@ -765,8 +765,8 @@ main {
 /* Carousel Container */
 .carousel {
   position: relative;
-  width: 100%;
-  max-width: 600px;
+  width: 90%; /* Narrower width for mobile view */
+  max-width: 600px; /* Retains max-width on larger screens */
   margin: 20px auto;
   overflow: hidden;
   border-radius: 10px;
@@ -815,7 +815,42 @@ main {
   color: var(--white-2);
 }
 
-/*-------------------*\
+/* Responsive Adjustments for Mobile */
+@media (max-width: 768px) {
+  .carousel {
+    width: 100%; /* Use full width on smaller screens */
+    max-width: 100%;
+  }
+
+  .carousel-btn {
+    font-size: 20px; /* Adjust button size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel {
+    width: 100%; /* Full width for smaller devices */
+  }
+
+  .carousel-images img {
+    border-radius: 8px; /* Slightly smaller radius on smaller screens */
+  }
+
+  .carousel-btn {
+    font-size: 18px; /* Further reduce button size on very small screens */
+  }
+
+  /* Optional: Adjust button position on small screens */
+  .carousel-btn.prev {
+    left: 5px;
+  }
+
+  .carousel-btn.next {
+    right: 5px;
+  }
+}
+/* =============================================// */
+
 
 /*-----------------------------------*\
   #RESUME
