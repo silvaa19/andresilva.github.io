@@ -754,19 +754,45 @@
               </li> -->
 
               <!-----------------APPS ------------------->
-              <li class="project-item active" data-filter-item data-category="apps">
-                <a href="FlightGenius.html">
+              <li class="project-item active" data-filter-item data-category="apps" data-modal-id="modal-nessaHours">
+                <a href="#">
                   <figure class="project-img">
                     <div class="project-item-icon-box">
                       <ion-icon name="eye-outline"></ion-icon>
                     </div>
                     <img src="./assets/images/nessaHours.png" alt="Hour Tracker" loading="lazy"/>
                   </figure>
-                  <h3 class="project-title">Work Hours Tracker</h3>
-                  <p class="project-category">Applications</p>
                 </a>
+                  <h3 class="project-title">Work Hours Tracker</h3>
+                  <p class="project-category">Applications</p>    
               </li>
-              
+
+              <div class="modal-container project-modal" id="modal-nessaHours">
+                <div class="overlay" data-overlay></div>
+                <section class="testimonials-modal">
+                  <button class="modal-close-btn" data-modal-close-btn>
+                    <ion-icon name="close-outline"></ion-icon>
+                  </button>
+                  <div class="modal-content">
+                    <h4 class="h3 modal-title">NessaHours APP</h4>
+                    <p>
+                      This is the information about the Westchester Scalp Ink brand, the work done, technologies used, and other relevant details.
+                    </p>
+
+                    <!-- Image Carousel -->
+                    <div class="carousel">
+                      <button class="carousel-btn prev" data-carousel-btn="prev">‹</button>
+
+                      <div class="carousel-images">
+                        <img src="./assets/images/blog-1.jpg" alt="Project Image 1" class="active">
+                        <img src="./assets/images/blog-2.jpg" alt="Project Image 2">
+                        <img src="./assets/images/blog-3.jpg" alt="Project Image 3">
+                      </div>
+                      <button class="carousel-btn next" data-carousel-btn="next">›</button>
+                    </div>
+                  </div>            
+                </section>
+              </div>
         <!----------------BRANDS------------->
               
 
@@ -786,7 +812,7 @@
                 </a>
               </li>
 
-               <!-- Modal for a Project with a New Class "project-modal" -->
+               
               <li class="project-item active" data-filter-item data-category="brands" data-modal-id="modal-wsi">
                 <a href="#">
                   <figure class="project-img">
@@ -795,8 +821,6 @@
                 </a>
               </li>
 
-              
-              
               <div class="modal-container project-modal" id="modal-wsi">
                 <div class="overlay" data-overlay></div>
                 <section class="testimonials-modal">
@@ -821,8 +845,6 @@
 
                       <button class="carousel-btn next" data-carousel-btn="next">›</button>
                     </div>
-
-                    
                   </div>            
                 </section>
               </div>

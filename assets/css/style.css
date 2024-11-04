@@ -284,20 +284,39 @@ article.active {
 }
 
 
-/* Project Modal Specific Styles */
-.project-modal .modal-content {
-  /*background-color: var(--onyx); /* Different background */
-  color: var(--orange-yellow-crayola); /* Unique text color */
+/* Project Modal Specific Styling for Better Mobile Display */
+.project-modal {
+  background: var(--eerie-black-2);
+  position: relative;
+  padding: 20px;
+  margin: 15px 12px;
+  border: 1px solid var(--jet);
+  border-radius: 14px;
+  box-shadow: var(--shadow-5);
+  max-width: 80vw; /* Constrain width on all screens to avoid stretching */
+  max-height: 80vh; /* Constrain height */
+  overflow-y: auto;
 }
 
-.project-modal .modal-title {
-  font-size: var(--fs-1); /* Larger title font */
-  color: var(--vegas-gold);
+/* Responsive Adjustments for Project Modals on Smaller Screens */
+@media (max-width: 768px) {
+  .project-modal {
+    max-width: 90vw; /* Slightly wider on medium screens */
+    max-height: 85vh;
+    padding: 15px;
+    border-radius: 10px;
+  }
 }
 
-.project-modal .overlay {
-  background: rgba(0, 0, 0, 0.85); /* Darker overlay for project modals */
+@media (max-width: 480px) {
+  .project-modal {
+    max-width: 95vw; /* Full width on small screens */
+    max-height: 90vh;
+    padding: 10px;
+    border-radius: 8px;
+  }
 }
+
 
 
 /*-----------------------------------*\
