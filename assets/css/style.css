@@ -284,19 +284,28 @@ article.active {
 }
 
 
-/* Project Modal Specific Styling for Better Mobile Display */
-.project-modal {
-  background: var(--eerie-black-2);
-  position: relative;
-  padding: 20px;
-  margin: 15px 12px;
-  border: 1px solid var(--jet);
-  border-radius: 14px;
-  box-shadow: var(--shadow-5);
-  max-width: 80vw; /* Constrain width on all screens to avoid stretching */
-  max-height: 80vh; /* Constrain height */
-  overflow-y: auto;
+/* Project Modal Specific Styles */
+.project-modal .modal-content {
+  /*background-color: var(--onyx); /* Different background */
+  color: var(--orange-yellow-crayola); /* Unique text color */
 }
+
+.project-modal .modal-title {
+  font-size: var(--fs-1); /* Larger title font */
+  color: var(--vegas-gold);
+}
+
+.project-modal .overlay {
+  background: rgba(0, 0, 0, 0.85); /* Darker overlay for project modals */
+}
+
+.project-modal img {
+  max-width: 100%; /* Ensures images don’t exceed modal width */
+  height: auto;    /* Keeps aspect ratio */
+  display: block;
+  margin: 0 auto;  /* Centers the image */
+}
+
 
 /* Responsive Adjustments for Project Modals on Smaller Screens */
 @media (max-width: 768px) {
@@ -316,7 +325,6 @@ article.active {
     border-radius: 8px;
   }
 }
-
 
 
 /*-----------------------------------*\
