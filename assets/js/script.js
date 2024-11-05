@@ -1,5 +1,13 @@
 'use strict';
 
+// Prevent the default action of project links
+document.querySelectorAll(".project-link").forEach(link => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevents the page from scrolling to top or reloading
+    // Add any additional code for what you want to happen on click
+  });
+});
+
 // Carousel navigation functionality with swipe support
 document.querySelectorAll(".project-modal").forEach((modal) => {
   const images = modal.querySelectorAll(".carousel-images img");
