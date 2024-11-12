@@ -3,14 +3,13 @@
 // Prevent the default action of project links
 document.querySelectorAll(".project-link").forEach(link => {
   link.addEventListener("click", (event) => {
-    event.preventDefault(); // Prevents the page from scrolling to top or reloading
-    // Add any additional code for what you want to happen on click
+    event.preventDefault(); // Prevents page from scrolling to top or reloading
   });
 });
 
 // Carousel navigation functionality with swipe support
-document.querySelectorAll(".project-modal").forEach((modal) => {
-  const images = modal.querySelectorAll(".carousel-images img");
+document.querySelectorAll(".carousel").forEach((carousel) => {
+  const images = carousel.querySelectorAll(".carousel-images img");
   let currentIndex = 0;
   let startX = 0;
   let endX = 0;
@@ -19,23 +18,23 @@ document.querySelectorAll(".project-modal").forEach((modal) => {
     images.forEach((img, i) => img.classList.toggle("active", i === index));
   };
 
-  // Event listeners for carousel navigation buttons
-  modal.querySelector("[data-carousel-btn='prev']").addEventListener("click", () => {
+  // Event listeners for previous and next buttons
+  carousel.querySelector("[data-carousel-btn='prev']").addEventListener("click", () => {
     currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
     updateCarousel(currentIndex);
   });
 
-  modal.querySelector("[data-carousel-btn='next']").addEventListener("click", () => {
+  carousel.querySelector("[data-carousel-btn='next']").addEventListener("click", () => {
     currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
     updateCarousel(currentIndex);
   });
 
   // Swipe handling for mobile devices
-  modal.querySelector(".carousel-images").addEventListener("touchstart", (e) => {
+  carousel.addEventListener("touchstart", (e) => {
     startX = e.touches[0].clientX;
   });
 
-  modal.querySelector(".carousel-images").addEventListener("touchend", (e) => {
+  carousel.addEventListener("touchend", (e) => {
     endX = e.changedTouches[0].clientX;
     handleSwipe();
   });

@@ -641,12 +641,13 @@ main { margin: 15px 12px; margin-bottom: 75px; min-width: 259px; }
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 24px;
+  font-size: 48px;
   color: var(--orange-yellow-crayola);
   background: none;
   border: none;
   cursor: pointer;
   z-index: 2;
+  padding: 20px;
 }
 
 .carousel-btn.prev {
