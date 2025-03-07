@@ -56,11 +56,6 @@ document.querySelectorAll(".carousel").forEach((carousel) => {
 
 
 
-
-
-
-
-
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
@@ -78,7 +73,6 @@ const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
 const modalCloseBtns = document.querySelectorAll("[data-modal-close-btn]");
 const overlay = document.querySelectorAll("[data-overlay]");
 
-'use strict';
 
 // Toggle function for all modals
 const toggleModalFunc = function (modal) {
@@ -120,7 +114,7 @@ document.querySelectorAll("[data-modal-close-btn], [data-overlay]").forEach((ele
 overlay.forEach((overlayItem) => {
   overlayItem.addEventListener("click", function () {
     const modal = overlayItem.closest(".modal-container");
-    testimonialsModalFunc(modal);
+    toggleModalFunc(modal);
   });
 });
 
