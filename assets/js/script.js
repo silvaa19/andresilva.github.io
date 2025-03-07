@@ -1,5 +1,26 @@
 'use strict';
+//APIKEYS
+// Function to fetch the latest commit from GitHub
+const fetchLatestCommit = async (repo) => {
+  try {
+    const response = await fetch(`https://api.github.com/repos/${repo}/commits`);
+    const data = await response.json();
+    const latestCommit = data[0];
+    return latestCommit;
+  } catch (error) {
+    console.error('Error fetching latest commit:', error);
+  }
+};
 
+// Example usage
+fetchLatestCommit('silvaa19/ENT_Login_Project').then((commit) => {
+  if (commit) {
+    const commitDate = new Date(commit.commit.author.date).toLocaleDateString('en-US');
+    const latestCommitDateElement = document.querySelector('[data-latest-commit-date]');
+    latestCommitDateElement.innerHTML = commitDate;
+    latestCommitDateElement.setAttribute('datetime', commit.commit.author.date);
+  }
+});
 // Prevent the default action of project links
 document.querySelectorAll(".project-link").forEach(link => {
   link.addEventListener("click", (event) => {
