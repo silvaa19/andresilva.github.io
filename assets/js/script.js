@@ -1,6 +1,7 @@
 'use strict';
 //APIKEYS
-// Function to fetch the latest commit from GitHub
+let latestCommitDate = '';
+
 const fetchLatestCommit = async (repo) => {
   try {
     const response = await fetch(`https://api.github.com/repos/${repo}/commits`);
@@ -12,15 +13,15 @@ const fetchLatestCommit = async (repo) => {
   }
 };
 
-// Example usage
-fetchLatestCommit('silvaa19/ENT_Login_Project').then((commit) => {
-  if (commit) {
-    const commitDate = new Date(commit.commit.author.date).toLocaleDateString('en-US');
-    const latestCommitDateElement = document.querySelector('[data-latest-commit-date]');
-    latestCommitDateElement.innerHTML = commitDate;
-    latestCommitDateElement.setAttribute('datetime', commit.commit.author.date);
-  }
+// Prefetch the latest commit data when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+  fetchLatestCommit('silvaa19/ENT_Login_Project').then((commit) => {
+    if (commit) {
+      latestCommitDate = new Date(commit.commit.author.date).toLocaleDateString('en-US');
+    }
+  });
 });
+
 // Prevent the default action of project links
 document.querySelectorAll(".project-link").forEach(link => {
   link.addEventListener("click", (event) => {
@@ -118,6 +119,10 @@ document.querySelectorAll("[data-modal-id]").forEach((item) => {
         modal.querySelector("[data-modal-title]").innerHTML = item.querySelector("[data-testimonials-title]").innerHTML;
         modal.querySelector("[data-modal-text]").innerHTML = item.querySelector("[data-testimonials-text]").innerHTML;
       }
+
+      // Update the latest commit date in the modal
+      const latestCommitDateElement = modal.querySelector('[data-latest-commit-date]');
+      latestCommitDateElement.innerHTML = latestCommitDate;
     } else {
       console.error("Modal with ID " + modalId + " not found.");
     }
